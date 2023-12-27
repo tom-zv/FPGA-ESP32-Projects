@@ -1,0 +1,174 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+html{
+    height: 100%;
+}
+body{
+    display: none;
+    transition: opacity 0.3s ease;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+}
+header, footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #1c1c1c;
+    color: white;
+    font-size: 14px;
+}
+
+footer button{
+    margin-bottom: 20px;
+}
+main {
+    flex : 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.button, .power-button, .mode-button {
+    display: flex;
+    width: auto;
+    margin: 8px auto;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.mode-button{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    
+}
+.button:hover, .power-button:hover, .mode-button:hover, .mode-button.active {
+    background-color: #555;
+    color: white;
+    transform: scale(1.02);
+}
+
+.mode-container {
+    margin: 30px auto;
+    margin-top: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #222;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.control-group span, label, span {
+    margin: 5px;
+    font-size: 20px;
+}
+.swing-button-container {
+    text-align: center;
+    margin-top: 20px; /* Spacing from other content */
+}
+
+.swing-button {
+    padding: 10px 20px; /* Adjust padding to fit your design */
+    background-color: gray; /* Default background color */
+    color: white; /* Default text/icon color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for visual feedback */
+}
+
+.swing-button:hover {
+    transform: scale(1.1); /* Slightly enlarge button on hover */
+}
+
+.swing-off {
+    background-color: #d9534f; /* Red, indicating 'off' state */
+}
+
+.swing-on {
+    background-color: #5cb85c; /* Green, indicating 'on' state */
+}
+.control-group {
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 10px;
+}
+.pm-controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pm-controls button{
+    margin: auto 10px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10%;
+    border: none;
+    justify-content: center;
+}
+.value-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    margin: 0 15px;
+}
+.power-off {
+    background-color: #d9534f;
+}
+
+.power-on {
+    background-color: #5cb85c;
+}
+
+.fas {
+    margin-right: 2px;
+}
+
+@media (max-width: 600px) {
+    main, .button, .power-button{
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+    .control-group{
+        width: 50%;
+    }
+    .power-button{
+        padding: 12px 18px;
+        width: 18%;
+    }
+
+}
+
+@media (min-width: 601px) {
+    .control-group, .button, .power-button, .mode-button .mode-container {
+        max-width: 200px; /* Restricting maximum width for better aesthetics on larger screens */
+    }
+
+    .mode-container{
+        width: 20%;
+    }
+}

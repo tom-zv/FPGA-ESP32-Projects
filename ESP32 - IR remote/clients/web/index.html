@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC Remote Control</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    
+</style>
+<body>
+    <header>
+        <h1>AC Remote Control</h1>
+    </header>
+
+    <main>
+        <div class="power-button-container">
+            <button id="power-button" onclick="togglePower()" class="power-button power-off">
+                <i class="material-icons-outlined">power_settings_new</i>
+            </button>
+        </div>
+
+        <div class="control-group">
+            <label for="fanSpeedDisplay">Fan Speed</label>
+            <div class="pm-controls">
+                <button onclick="changeFanSpeed(-1)">-</button>
+                <span id="fanSpeedDisplay" class="value-display"></span> <!-- Placeholder for fan speed icons -->
+                <button onclick="changeFanSpeed(1)">+</button>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="pm-controls">
+                <button onclick="changeTemperature(-1)">-</button>
+                <span id="tempDisplay" class="value-display">22°C</span> <!-- Placeholder for temperature -->
+                <button onclick="changeTemperature(1)">+</button>
+            </div>
+        </div>
+
+        <div class="swing-button-container">
+            <button id="swing-button" onclick="toggleSwing()" class="swing-button">
+                <i class="material-icons-outlined">shuffle</i>
+            </button>
+        </div>
+
+        <div class="mode-container">
+            <button onclick="changeMode('COOL')" id="mode-COOL" class="mode-button">
+                <i class="material-icons-outlined">ac_unit</i>
+            </button>
+            <button onclick="changeMode('HEAT')" id="mode-HEAT" class="mode-button">
+                <i class="material-icons-outlined">wb_sunny</i>
+            </button>
+            <button onclick="changeMode('DRY')" id="mode-DRY" class="mode-button">
+                <i class="material-icons-outlined">water_drop</i>
+            </button>
+            <button onclick="changeMode('FAN')" id="mode-FAN" class="mode-button">
+                <i class="material-icons-outlined">air</i>
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <p>AC Remote Control Webpage</p>
+        <button onclick="window.location.href='/upload.html'" class="footer-button">
+            Upload Page
+        </button>
+        <button onclick="window.location.href='/schedule.html'" class="footer-button">
+            Schedule Page
+        </button>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

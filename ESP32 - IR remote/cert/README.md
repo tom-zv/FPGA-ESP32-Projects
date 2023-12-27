@@ -1,0 +1,1 @@
+This folder holds the self-signed certificates used for the HTTPS encrypted connection.

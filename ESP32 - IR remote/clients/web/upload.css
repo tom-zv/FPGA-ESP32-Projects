@@ -1,0 +1,52 @@
+
+body {
+    display: none;
+}
+.upload-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(49, 49, 49);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 35px;
+}
+.upload-container label{
+    margin-top: 50px;
+}    
+.upload-container .file-button{
+    margin-top : 20px;
+    justify-content: center;
+    width: 30%;
+}
+.file-update-container {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;  /* Allows items to wrap into the next line as needed */
+    gap: 10px;        /* Provides space between buttons */
+    justify-content: center; /* Center-aligns items horizontally */
+    align-items: center; /* Center-aligns items vertically */
+    flex: 1 1 100px; /* Flex-grow, Flex-shrink, Flex-basis */
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(49, 49, 49); /* Light grey background for visibility */
+    border-radius: 5px;
+}
+.file-button {
+    padding: 8px;
+    width: 70%;
+    border: none;
+    border-radius: 8px;
+}
+@media (max-width: 600px) {
+    button {
+        width: 20%;
+    }
+}
+@media (min-width: 601px) {
+    .file-update-container{
+        margin: auto;
+        width: 20%;
+    }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- schedule.html -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AC schedule</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="schedule.css" />
+  </head>
+  <body>
+    <main>
+        <div class="schedule-entry-group">
+        <label for="index">index:</label>
+        <input type="text" id="index" class="schedule-entry-input" size="2">
+        <label for="hour_on">Hour On:</label>
+        <input type="text" id="hour_on" name="hour_on" class="schedule-entry-input" min="0" max="23" value="00" size="2">
+        <label for="minute_on">Minute On:</label>
+        <input type="text" id="minute_on" name="minute_on" class="schedule-entry-input" min="0" max="59" value="00" size="2">
+        <label for="hour_off">Hour Off:</label>
+        <input type="text" id="hour_off" name="hour_off" class="schedule-entry-input" min="0" max="23" value="00" size="2">
+        <label for="minute_off">Minute Off:</label>
+        <input type="text" id="minute_off" name="minute_off" class="schedule-entry-input" min="0" max="59" value="00" size="2">
+        <label for="wday_bitmask">Days of Week (bitmask):</label>
+        <input type="text" id="wday_bitmask" name="wday_bitmask" class="schedule-entry-input" min="0" max="127" value="0000000" size="7">
+        <button onclick="postSchedule()" class="post-schedule-button"> Post Schedule</button>
+        </div>
+
+        <div id="scheduleContainer"></div>
+    </main>
+    <footer>
+      <button onclick="window.location.href='/index.html'" class="footer-button">
+          Home
+      </button>
+      <button onclick="window.location.href='/upload.html'" class="footer-button">
+          upload Page
+      </button>
+  </footer>
+    <script src="schedule.js"></script>
+  </body>
+</html>
