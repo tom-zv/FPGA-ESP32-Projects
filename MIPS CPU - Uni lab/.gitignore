@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*~
+*.bak
+*.tmp
+
+# Xilinx ISE / ISim outputs
+_xmsgs/
+xlnx_auto_0_xdb/
+xst/
+isim/
+isim.dir/
+fuse.log
+fuse.xmsgs
+fuseRelaunch.cmd
+
+# Simulation outputs
+work-obj*.cf
+*.wdb
+*.vcd
+*.asdb
+*.log

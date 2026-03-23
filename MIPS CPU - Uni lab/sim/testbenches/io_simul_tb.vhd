@@ -4,7 +4,7 @@
 --
 -- Create Date:   10:43:08 07/13/2015
 -- Design Name:   
--- Module Name:   E:/a_dlx_S25/student2/IOSimul_S25/SIMUL_T.vhd
+-- Module Name:   io_simul_tb.vhd
 -- Project Name:  IOSimul_S25
 -- Target Device:  
 -- Tool versions:  
@@ -32,10 +32,10 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY SIMUL_T IS
-END SIMUL_T;
+ENTITY io_simul_tb IS
+END io_simul_tb;
  
-ARCHITECTURE behavior OF SIMUL_T IS 
+ARCHITECTURE behavior OF io_simul_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
