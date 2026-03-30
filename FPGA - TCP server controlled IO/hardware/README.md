@@ -1,1 +1,1 @@
-Hardware component is the Zynq Processing System, with an AXI interface to the board LEDS.
+Hardware component is the Zynq Processing System, with an AXI interface to the board LEDs.
