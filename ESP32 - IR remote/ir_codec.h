@@ -8,25 +8,26 @@
 #define DATA_UNIT_DURATION 1000  // duration of SPACE/MARK
 #define DATA_UNIT_DURATION_TOLERANCE 200 
 #define MAX_DATA_SYMBOL_BIT_LEN 4 // Biggest data symbol is the trailing, 4000us MARK 
-                                  //                                      '1111' after decoding to bits
+                                  //                                      '1111' in bits
 
 typedef union ir_jetpoint_settings
 {
-    struct // Data sent with 'power' going first
-    {  
-        uint64_t zeros1 : 1;      // bits 0        credit to barakwei- https://github.com/barakwei/IRelectra                                                
-        uint64_t ones1 : 1;       // bits 1        for configuration structure
+    // Bit layout (MSB to LSB, bit 33 first). Credit: barakwei - https://github.com/barakwei/IRelectra
+    struct
+    {
+        uint64_t zeros1 : 1;      // bit 0
+        uint64_t ones1 : 1;       // bit 1  (always 1)
         uint64_t zeros2 : 16;     // bits 2-17
-        uint64_t sleep : 1;       // bits 18
-        uint64_t temperature : 4; // bits 19-22
+        uint64_t sleep : 1;       // bit 18
+        uint64_t temperature : 4; // bits 19-22  (offset by 16: 0=16°C, 14=30°C)
         uint64_t zeros3 : 2;      // bits 23-24
-        uint64_t swing : 1;       // bits 25
+        uint64_t swing : 1;       // bit 25
         uint64_t zeros4 : 2;      // bits 26-27
-        uint64_t fan : 2;         // bits 28-29         
-        uint64_t mode : 3;        // bits 30-32     COOL = 1|HEAT = 2|AUTO = 3|DRY = 4|FAN = 5  
-        uint64_t power : 1;       // bits 33     
-        uint64_t padding : 29;
-        uint64_t power_state: 1;  // Current AC state. since 'power' toggles the AC, need a seperate state tracker
+        uint64_t fan : 2;         // bits 28-29
+        uint64_t mode : 3;        // bits 30-32  COOL=1 HEAT=2 AUTO=3 DRY=4 FAN=5
+        uint64_t power : 1;       // bit 33      toggles AC on/off
+        uint64_t padding : 29;    // unused upper bits
+        uint64_t power_state: 1;  // Current AC state. Since 'power' toggles the AC, this tracks the actual on/off state.
     };
     uint64_t raw;
 

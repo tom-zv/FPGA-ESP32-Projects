@@ -17,7 +17,7 @@
 #define IS_FILE_EXT(filename, ext) \
     (strcasecmp(&filename[strlen(filename) - sizeof(ext) + 1], ext) == 0)
 
-static char* TAG = "http file ops";
+static const char *TAG = "http file ops";
 
 esp_err_t mount_spiffs_storage() {
 
@@ -213,7 +213,7 @@ esp_err_t upload_file(httpd_req_t *req){
     fclose(fd);
     httpd_resp_sendstr(req, "File uploaded successfully");
     return ESP_OK;
-};
+}
 
 
 

@@ -97,7 +97,6 @@ size_t rmt_encode_jetpoint(rmt_encoder_t *encoder, rmt_channel_handle_t channel,
     }
 
 out:
-    //ets_printf("TOTAL: encoded %d symbols\n", encoded_symbols);
     *ret_state = state;
     return encoded_symbols;
 }
@@ -166,11 +165,11 @@ err:
     {
         if (encoder->bytes_encoder)
         {
-            rmt_del_jetpoint_encoder(encoder->bytes_encoder);
+            rmt_del_encoder(encoder->bytes_encoder);
         }
         if (encoder->copy_encoder)
         {
-            rmt_del_jetpoint_encoder(encoder->copy_encoder);
+            rmt_del_encoder(encoder->copy_encoder);
         }
         free(encoder);
     }

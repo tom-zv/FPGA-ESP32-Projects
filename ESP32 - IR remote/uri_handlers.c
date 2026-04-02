@@ -19,10 +19,10 @@ const static char* TAG = "uri handlers";
 #define MAX_FAN_VAL 3
 #define MIN_FAN_VAL 0
 
-void request_info(httpd_req_t *req){
-ESP_LOGI(TAG, "Received request: %s %s", http_method_str(req->method), req->uri);
+void request_info(httpd_req_t *req) {
+    ESP_LOGI(TAG, "Received request: %s %s", http_method_str(req->method), req->uri);
 
-    // Log the Host header if present
+    // Log selected headers for debugging
     char info[256];
     if (httpd_req_get_hdr_value_str(req, "Host", info, sizeof(info)) == ESP_OK) {
         ESP_LOGI(TAG, "Host: %s", info);
@@ -30,8 +30,6 @@ ESP_LOGI(TAG, "Received request: %s %s", http_method_str(req->method), req->uri)
         ESP_LOGI(TAG, "Host header not found");
     }
 
-    // Log the User-Agent header if present
-    
     if (httpd_req_get_hdr_value_str(req, "User-Agent", info, sizeof(info)) == ESP_OK) {
         ESP_LOGI(TAG, "User-Agent: %s", info);
     } else {
@@ -56,12 +54,11 @@ ESP_LOGI(TAG, "Received request: %s %s", http_method_str(req->method), req->uri)
         ESP_LOGI(TAG, "X-Forwarded-Port header not found");
     }
 
-     if (httpd_req_get_hdr_value_str(req, "referer", info, sizeof(info)) == ESP_OK) {
+    if (httpd_req_get_hdr_value_str(req, "referer", info, sizeof(info)) == ESP_OK) {
         ESP_LOGI(TAG, "referer: %s", info);
     } else {
         ESP_LOGI(TAG, "referer header not found");
     }
-
 }
 
 int parse_command_delta(char *command, char* delta_prefix){
@@ -196,14 +193,14 @@ esp_err_t update_post_handler(httpd_req_t *req){
         if(new_fan_val > MAX_FAN_VAL) new_fan_val = MAX_FAN_VAL;
         tx_ctx->ir_settings->fan = new_fan_val;
     }
-    else if (!strncmp(command, "FAN_DOWN", sizeof("FAN_DOWN" - 1)))
+    else if (!strncmp(command, "FAN_DOWN", sizeof("FAN_DOWN") - 1))
     {
-        int delta = parse_command_delta(command, "FAN_UP");
+        int delta = parse_command_delta(command, "FAN_DOWN");
 
         int new_fan_val = (tx_ctx->ir_settings->fan > delta) ? (tx_ctx->ir_settings->fan - delta) : 0; // Deals with underflow
         tx_ctx->ir_settings->fan = new_fan_val;
     }
-    else if (!strncmp(command, "COOL", sizeof("COOL" - 1)))
+    else if (!strncmp(command, "COOL", sizeof("COOL") - 1))
     {
         tx_ctx->ir_settings->mode = 1;
     }

@@ -117,7 +117,6 @@ int delay_to_nearest_schedule_ms(schedule_manager *smanager)
         time_delay_ms = -1; // No schedule
     }
 
-    //ESP_LOGI(TAG, "nearest schedule: index %d, wday %d, delay %d", nearest_sched_index, nearest_sched_wday, time_delay_ms);
     return time_delay_ms;
 }
 
@@ -292,9 +291,7 @@ void ac_scheduler_task(void* pvParams){
             }
         break;
         
-        case EVENT_SCHED_UPDATE: // schedule format - "I HH MM HH MM DBITMSK"  || 
-
-            //ESP_LOGI(TAG, "updating schedule; incoming data - %s", schedule_ctx->schedule_data);
+        case EVENT_SCHED_UPDATE: // format: "I HH MM HH MM DBITMSK"
 
             index_len = parse_index(schedule_ctx->schedule_data, &sched_index);
             if(index_len == 0) uri_err_notification = ERR_WRONG_FORMAT;
@@ -308,7 +305,6 @@ void ac_scheduler_task(void* pvParams){
                         if (transfer_data_to_entry(schedule_manager.entries, i, schedule_ctx->schedule_data + 1 + 1) != ESP_OK)
                             uri_err_notification = ERR_WRONG_FORMAT;
                         found_slot = 1;
-                        //ESP_LOGI(TAG, "schedule updated, index %d", i);
                         break;
                     }
                 }
@@ -320,7 +316,6 @@ void ac_scheduler_task(void* pvParams){
                 {
                     if (transfer_data_to_entry(schedule_manager.entries, sched_index, schedule_ctx->schedule_data + index_len + 1) != ESP_OK)
                         uri_err_notification = ERR_WRONG_FORMAT;
-                    //ESP_LOGI(TAG, "schedule updated, index %d", sched_index);
                 }
             }
 
@@ -351,7 +346,7 @@ void ac_scheduler_task(void* pvParams){
             scheduler_state = config_wakeup(&schedule_manager, schedule_timer);
         break;
 
-        case EVENT_SCHED_DEL: //  
+        case EVENT_SCHED_DEL:
             index_len = parse_index(schedule_ctx->schedule_data, &sched_index);
             
             if (index_len > 0)

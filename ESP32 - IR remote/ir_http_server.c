@@ -24,7 +24,7 @@
 #define CHANNEL_DC 0.33
 #define CARRIER_FREQ 33000
 
-static const char *TAG = "IR receiver http server";
+static const char *TAG = "IR remote http server";
 
 esp_err_t sntp_sync(){
 
@@ -93,8 +93,10 @@ esp_err_t setup_server_context(server_context* server_ctx) {
     // Allocate shared resources
     char* file_buf = malloc(FILE_BUF_SIZE);
     char* schedule_buf = malloc(SCHEDULE_BUF_SIZE);
-    if (!file_buf ) {
+    if (!file_buf || !schedule_buf) {
         ESP_LOGE(TAG, "Failed to allocate memory for file storage");
+        free(file_buf);
+        free(schedule_buf);
         return ESP_ERR_NO_MEM;
     }
     server_ctx->file_buf = file_buf;
@@ -105,7 +107,7 @@ esp_err_t setup_server_context(server_context* server_ctx) {
 
 
 #ifdef CONFIG_ESP_TLS_USING_MBEDTLS
-#ifdef DEBUG_HTTPS_CONNECTION
+#if DEBUG_HTTPS_CONNECTION
 static void print_peer_cert_info(const mbedtls_ssl_context *ssl)
 {
     const mbedtls_x509_crt *cert;

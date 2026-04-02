@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>FPGA & ESP32 Projects</h1>
-    <p>This repository showcases a collection of projects designed for both practical applications and learning, including low-level and embedded software, HDL RTL code, FPGA design, and workflow, as well as hands-on breadboard prototyping.</p>
+    <p>This repository showcases a collection of projects designed for both practical applications and learning, including low-level and embedded software, HDL RTL code, FPGA design and workflow, as well as hands-on breadboard prototyping.</p>
     <br>
     <p align="center">
         <img width="477" height="280" src="https://github.com/tom-zv/FPGA-ESP32-Projects/assets/96687713/daed1b9a-fb58-4950-8504-b4c627fc80a3">

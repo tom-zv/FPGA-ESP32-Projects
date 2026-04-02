@@ -16,7 +16,7 @@
 #define ESP_WIFI_SSID      CONFIG_ESP_WIFI_SSID
 #define ESP_WIFI_PASS      CONFIG_ESP_WIFI_PASSWORD
 
-static const char* TAG = "My wifi Station";
+static const char* TAG = "wifi_sta";
 static int s_retry_num = 0;
 
 EventGroupHandle_t wifi_event_group;
@@ -34,7 +34,6 @@ static void network_event_handler(void* arg, esp_event_base_t event_base,
         } else {
             xEventGroupSetBits(wifi_event_group, WIFI_FAIL_BIT);
         }
-        
 
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
